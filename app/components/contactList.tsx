@@ -16,6 +16,7 @@ const ContactList: React.FC<ContactListProps> = ({ contacts }) => {
         <div key={'contact_' + index} className="border p-2 mb-2 rounded">
           <p><strong>Name:</strong> {contact.name}</p>
           <p><strong>Email:</strong> {contact.email}</p>
+          <p><strong>Phone:</strong> {contact.phone}</p>
         </div>
       ))}
     </div>
