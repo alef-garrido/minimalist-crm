@@ -1,10 +1,6 @@
 import React, { useState, useContext } from 'react';
-import { ContactContext } from '../context/ContactContext';
+import { ContactContext } from '../context/contactContext';
 import type { ContactData } from '../types';
-
-// interface ContactFormProps {
-//   onSubmit: (contact: ContactData) => void;
-// }
 
 const ContactForm:  React.FC = () =>  {
   const { addContact } = useContext(ContactContext);

@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { ContactContext } from '../context/ContactContext';
+import { ContactContext } from '../context/contactContext';
 
 const ContactList: React.FC = () => {
   const { contacts } = useContext(ContactContext);

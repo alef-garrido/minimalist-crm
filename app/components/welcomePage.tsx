@@ -17,6 +17,7 @@ const WelcomePage: React.FC = () => {
       </div>
     </main>
   );
+  
 }
 
 export default WelcomePage;
