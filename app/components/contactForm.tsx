@@ -1,11 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { ContactContext } from '../context/ContactContext';
 import type { ContactData } from '../types';
 
-interface ContactFormProps {
-  onSubmit: (contact: ContactData) => void;
-}
+// interface ContactFormProps {
+//   onSubmit: (contact: ContactData) => void;
+// }
 
-const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
+const ContactForm:  React.FC = () =>  {
+  const { addContact } = useContext(ContactContext);
+
   const [formData, setFormData] = useState<ContactData>({
     name: '',
     phone: '',
@@ -22,7 +25,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ onSubmit }) => {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onSubmit(formData);
+    addContact(formData);
     setFormData({
       name: '',
       phone: '',

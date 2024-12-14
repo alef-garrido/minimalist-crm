@@ -1,10 +1,9 @@
-import type { ContactData } from '../types';
+import { useContext } from 'react';
+import { ContactContext } from '../context/ContactContext';
 
-interface ContactListProps {
-  contacts: ContactData[];
-}
+const ContactList: React.FC = () => {
+  const { contacts } = useContext(ContactContext);
 
-const ContactList: React.FC<ContactListProps> = ({ contacts }) => {
   if (contacts.length === 0) {
     return <p>No contacts available.</p>;
   }
