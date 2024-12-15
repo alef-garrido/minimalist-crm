@@ -9,8 +9,14 @@ export const ContactProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setContacts([...contacts, contact]);
   };
 
+  const deleteContact = (id: string) => {
+    const newContacts = contacts.filter((contact) => contact.id !== id);
+    setContacts(newContacts); 
+  };
+
+
   return (
-    <ContactContext.Provider value={{ contacts, addContact }}>
+    <ContactContext.Provider value={{ contacts, addContact, deleteContact }}>
       {children}
     </ContactContext.Provider>
   );

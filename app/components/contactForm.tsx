@@ -1,11 +1,13 @@
 import React, { useState, useContext } from 'react';
 import { ContactContext } from '../context/contactContext';
 import type { ContactData } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
 const ContactForm:  React.FC = () =>  {
   const { addContact } = useContext(ContactContext);
 
   const [formData, setFormData] = useState<ContactData>({
+    id: '',
     name: '',
     phone: '',
     email: '',
@@ -21,8 +23,13 @@ const ContactForm:  React.FC = () =>  {
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    addContact(formData);
+    const newContact = {
+      ...formData,
+      id: uuidv4() 
+    };
+    addContact(newContact);
     setFormData({
+      id: '',
       name: '',
       phone: '',
       email: '',
