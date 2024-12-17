@@ -14,9 +14,15 @@ export const ContactProvider: React.FC<{ children: React.ReactNode }> = ({ child
     setContacts(newContacts); 
   };
 
+  const updateContact = (updatedContact: ContactData) => {
+    const newContacts = contacts.map((contact) =>
+      contact.id === updatedContact.id ? updatedContact : contact
+    );
+    setContacts(newContacts);
+  };
 
   return (
-    <ContactContext.Provider value={{ contacts, addContact, deleteContact }}>
+    <ContactContext.Provider value={{ contacts, addContact, deleteContact, updateContact }}>
       {children}
     </ContactContext.Provider>
   );
