@@ -1,9 +1,25 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { ContactContext } from '../context/contactContext';
-// import type { ContactData } from '../types';
+import ConfirmationDialog from './confirmationDialog';
 
 const ContactList: React.FC = () => {
   const { contacts, deleteContact } = useContext(ContactContext);
+  const [showDialog, setShowDialog] = useState(false);
+  const [contactIdToDelete, setContactIdToDelete] = useState<string>('');
+
+  const openDeleteDialog = (id: string) => {
+    setContactIdToDelete(id);
+    setShowDialog(true);
+  };
+
+  const closeDeleteDialog = () => {
+    setShowDialog(false);
+  };
+
+  const confirmDelete = () => {
+    deleteContact(contactIdToDelete);
+    closeDeleteDialog();
+  };
 
   if (contacts.length === 0) {
     return <p>No contacts available.</p>;
@@ -12,21 +28,28 @@ const ContactList: React.FC = () => {
   return (
     <div className="max-w-md mx-auto p-4">
       <h2 className="text-xl font-bold mb-4">Contacts</h2>
-      {contacts.map((contact, index) => (
-       <div key={contact.id} className="border p-2 mb-2 rounded flex justify-between items-center">
-        <div>
-          <p><strong>Name:</strong> {contact.name}</p>
-          <p><strong>Email:</strong> {contact.email}</p>
-          <p><strong>Phone:</strong> {contact.phone}</p>
-        </div>
+      {contacts.map((contact) => (
+        <div key={contact.id} className="border p-2 mb-2 rounded flex justify-between items-center">
+          <div>
+            <p><strong>Name:</strong> {contact.name}</p>
+            <p><strong>Email:</strong> {contact.email}</p>
+            <p><strong>Phone:</strong> {contact.phone}</p>
+          </div>
           <button
-            onClick={() => deleteContact(contact.id)} // Llama a deleteContact con el ID del contacto
+            onClick={() => openDeleteDialog(contact.id)}
             className="bg-red-600 text-white p-2 rounded"
           >
             Delete
           </button>
         </div>
       ))}
+      <ConfirmationDialog
+        isOpen={showDialog}
+        onClose={closeDeleteDialog}
+        onConfirm={confirmDelete}
+      >
+        ¿Estás seguro de que deseas eliminar este contacto?
+      </ConfirmationDialog>
     </div>
   );
 };
