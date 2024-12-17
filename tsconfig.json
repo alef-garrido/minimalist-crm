@@ -6,7 +6,7 @@
     ".react-router/types/**/*"
   ],
   "compilerOptions": {
-    "outDir": "dist",
+    "outDir": "build",
     "lib": ["DOM", "DOM.Iterable", "ES2022"],
     "types": ["node", "vite/client"],
     "target": "ES2022",
