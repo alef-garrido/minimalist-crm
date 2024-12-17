@@ -1,5 +1,6 @@
 import type { Route } from "./+types/home";
-import { Welcome } from "../welcome/welcome";
+import { ContactProvider } from '../context/ContactProvider';
+import WelcomePage from "../components/welcomePage";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -9,5 +10,11 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
-  return <Welcome />;
+
+  return (
+    <ContactProvider>
+      <WelcomePage />
+    </ContactProvider>
+
+);
 }
