@@ -1,7 +1,3 @@
-Here's the translation to English:
-
----
-
 # Minimalist CRM for Small Businesses
 
 **Minimalist CRM** is a minimalist web application designed for small businesses, enabling efficient contact management through CRUD operations (Create, Read, Update, Delete). This project is built using **React**, **React Router v7**, **Vite**, and **Tailwind CSS**, with the goal of showcasing modern frontend development skills.
